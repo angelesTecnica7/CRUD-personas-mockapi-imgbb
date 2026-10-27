@@ -92,24 +92,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     form_modificar.addEventListener('submit', async (e) => {
         e.preventDefault()
-        const fileUploadM = document.querySelector('#imageInput')
-
+        
         //imgbb
         // Validamos que se haya seleccionado un archivo
-        if (fileUploadM.files.length === 0) {
-            imagenUrl = 'imgUserDefault.png'
-        } else {
 
-            // Preparamos los datos del formulario (formato Multipart Form Data obligatorio para enviar imagenes)
+        if (form_modificar.imagen.files.length === 0) {
+            imagenUrl = form_modificar.imgActual.value || 'imgUserDefault.png'
+        } else {
+            //  Preparamos los datos del formulario (formato Multipart Form Data obligatorio para enviar imagenes)
             const formData = new FormData();
-            formData.append('image', fileUploadM.files[0]);
+            formData.append('image', form_modificar.imagen.files[0]);
 
             // invocamos al modulo subirImg() enviando argumento imagen del formulario y esperamos recibir la url de la imagen en imgBB
             imagenUrl = await subirImg(formData)
-
-            console.log(imagenUrl)
         }
-
 
         //construyo el objeto que agregaremos al array
         const nuevosDatosPersona = {

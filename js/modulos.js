@@ -112,6 +112,7 @@ const mostrarformModificar = (nombreActual, edadActual, dni, id, imagen) => {
                     <input type="text" name="edad" value="${edadActual}" required>
                     <input type="text" name="dni" value="${dni}">
                     <input type="hidden" name="id" value="${id}">
+                    <input type="hidden" name="imgActual" value="${imagen}">
                     <input type="file" id="imageInput" name="imagen" accept="image/*" />
                     <input type="submit" name="submit" value="Modificar">
     `
